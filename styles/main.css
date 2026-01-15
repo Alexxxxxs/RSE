@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.gradient-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(230, 0, 126, 0.15);
+}
+
+.step-badge {
+    background: linear-gradient(135deg, #009FE3 0%, #00d4ff 100%);
+}
+
+.step-badge.pink {
+    background: linear-gradient(135deg, #E6007E 0%, #ff4da6 100%);
+}
