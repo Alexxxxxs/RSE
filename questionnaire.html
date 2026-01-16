@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,70 +8,234 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./config/tailwind.config.js"></script>
     <link rel="stylesheet" href="./styles/questionnaire.css">
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
-<body class="bg-mdc-gray min-h-screen flex flex-col">
 
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center group">
-                <svg class="w-5 h-5 text-gray-400 group-hover:text-mdc-pink mr-2 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                <span class="text-sm font-medium text-gray-500 group-hover:text-mdc-dark transition">Retour à l'accueil</span>
+<body class="bg-mdc-gray min-h-screen flex flex-col font-sans text-slate-600">
+
+    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-all">
+        <div class="max-w-6xl mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="index.html" class="flex items-center group py-2">
+                <div class="bg-gray-50 p-2 rounded-lg group-hover:bg-gray-100 transition">
+                    <svg class="w-6 h-6 text-gray-400 group-hover:text-mdc-pink transition" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                </div>
+                <span
+                    class="ml-3 text-sm font-semibold text-gray-500 group-hover:text-mdc-dark transition hidden sm:block">Retour</span>
             </a>
             <div class="text-center">
-                <span class="text-mdc-blue font-bold tracking-widest uppercase text-sm">Diagnostic RSE</span>
-                <p class="text-xs text-gray-400">Mutuelle de la Corse</p>
+                <span class="text-mdc-blue font-extrabold tracking-widest uppercase text-base block mb-1">Diagnostic
+                    RSE</span>
+                <p class="text-xs font-medium text-gray-400">Mutuelle de la Corse</p>
             </div>
-            <div class="w-20"></div>
+            <div class="w-12 sm:w-20"></div>
         </div>
     </header>
 
-    <main class="flex-grow container mx-auto px-4 py-8 max-w-4xl">
-        <div class="mb-8 max-w-3xl mx-auto" id="progress-container">
-            <div class="flex justify-between text-xs font-semibold text-gray-400 mb-2">
+    <main class="flex-grow container mx-auto px-4 py-8 max-w-5xl">
+
+        <div class="mb-10 max-w-3xl mx-auto" id="progress-container">
+            <div
+                class="flex justify-between text-xs sm:text-sm font-bold text-gray-400 mb-3 px-1 uppercase tracking-wide">
                 <span>Infos</span><span>Santé</span><span>QVT</span><span>Environnement</span><span>Local</span><span>Synthèse</span>
             </div>
-            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
-                <div id="progress-bar" class="h-full bg-mdc-pink transition-all duration-500 ease-out" style="width: 15%"></div>
+            <div class="h-3 bg-gray-200 rounded-full overflow-hidden shadow-inner">
+                <div id="progress-bar"
+                    class="h-full bg-gradient-to-r from-mdc-blue to-mdc-pink transition-all duration-700 ease-out rounded-full"
+                    style="width: 15%"></div>
             </div>
         </div>
 
-        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 md:p-10 slide-in relative overflow-hidden transition-all duration-500" id="main-card">
-            
+        <div class="bg-white rounded-3xl shadow-2xl border border-white p-8 md:p-12 lg:p-14 relative overflow-hidden transition-all duration-500"
+            id="main-card">
+
             <form id="rse-form" onsubmit="return false;">
-                <div id="step-content"></div>
-                
-                <div class="mt-10 flex justify-between items-center pt-6 border-t border-gray-100">
-                    <button type="button" id="prev-btn" onclick="changeStep(-1)" class="hidden px-6 py-2 rounded-lg text-gray-500 hover:bg-gray-100 font-medium transition">← Précédent</button>
-                    <button type="button" onclick="showResults()" class="px-4 py-2 text-sm text-gray-400 hover:text-gray-600 transition">Passer</button>
-                    <button type="button" id="next-btn" onclick="changeStep(1)" class="ml-auto px-8 py-3 rounded-lg bg-mdc-blue text-white font-bold hover:bg-sky-600 shadow-md transition transform hover:scale-105">Suivant →</button>
+                <div id="step-content" class="min-h-[200px]"></div>
+
+                <div
+                    class="mt-12 flex flex-col-reverse sm:flex-row justify-between items-center gap-4 pt-8 border-t border-gray-100">
+                    <button type="button" id="prev-btn" onclick="changeStep(-1)"
+                        class="hidden px-6 py-3 rounded-xl text-gray-500 hover:bg-gray-50 font-semibold transition w-full sm:w-auto text-sm">
+                        ← Précédent
+                    </button>
+
+                    <div class="flex items-center gap-4 w-full sm:w-auto justify-end">
+                        <button type="button" onclick="showResults()"
+                            class="px-5 py-3 text-sm font-medium text-gray-400 hover:text-gray-600 transition hover:underline">
+                            Passer
+                        </button>
+                        <button type="button" id="next-btn" onclick="changeStep(1)"
+                            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-mdc-blue text-white font-bold hover:bg-sky-700 shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 text-base tracking-wide">
+                            Suivant →
+                        </button>
+                    </div>
                 </div>
             </form>
 
-            <div id="result-screen" class="hidden">
+            <div id="result-screen" class="hidden animate-fade-in-up">
                 <div class="text-center mb-10">
-                    <div class="mb-4 inline-block p-3 rounded-full bg-green-50">
-                        <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <div class="mb-5 inline-block p-4 rounded-full bg-green-50 shadow-sm">
+                        <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
                     </div>
-                    <h2 class="text-3xl font-bold text-mdc-dark mb-2">Diagnostic Terminé !</h2>
-                    <p class="text-gray-500">Voici vos pistes d'action personnalisées.</p>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-mdc-dark mb-2">Diagnostic Terminé !</h2>
+                    <p class="text-lg text-gray-500">Voici vos pistes d'action personnalisées.</p>
                 </div>
 
-                <div class="bg-gray-50 rounded-xl p-6 md:p-8 border border-gray-200 mb-8">
-                    <h3 class="text-xl font-bold text-mdc-blue mb-6 flex items-center">
-                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        VOS PISTES D'ACTION IMMÉDIATES
-                    </h3>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="solutions-container">
+                <div class="mb-10">
+                    <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100">
+                        <h3 class="text-xl font-bold text-mdc-blue mb-6 flex items-center">
+                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                            VOS PISTES D'ACTION
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6"
+                            id="solutions-container">
+                        </div>
                     </div>
                 </div>
 
-                <div class="text-center">
-                    <button class="w-full md:w-auto px-8 py-4 bg-mdc-dark text-white font-bold rounded-lg hover:bg-gray-800 transition shadow-lg flex items-center justify-center mx-auto gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                <div class="my-10">
+                    <div class="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+                </div>
+
+                <div class="flex justify-center mb-10">
+                    <button
+                        class="px-10 py-4 bg-mdc-dark text-white font-bold rounded-xl hover:bg-black transition shadow-lg hover:shadow-2xl flex items-center justify-center gap-3 text-base">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
                         Télécharger mon Passeport RSE (PDF)
                     </button>
-                    <p class="mt-4 text-xs text-gray-400">Ce document synthétise vos engagements pour vos Appels d'Offres.</p>
+                </div>
+
+                <div class="my-10">
+                    <div class="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 border-2 border-mdc-blue/10 shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-mdc-blue/5 rounded-full blur-3xl">
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-start md:items-center mb-8 relative z-10">
+                        <div class="bg-mdc-blue text-white p-3 rounded-2xl mr-4 shadow-md mb-4 md:mb-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6v6m0 0v6m0-6h6m0 0h6M6 12a6 6 0 1112 0 6 6 0 01-12 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-mdc-dark">Approfondir avec nos experts</h3>
+                            <p class="text-sm text-gray-500 font-medium">Ateliers RSE gratuits & accompagnement</p>
+                        </div>
+                    </div>
+
+                    <form id="workshop-form" class="space-y-6 relative z-10" onsubmit="handleWorkshopSubmit(event)">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="workshop-name" class="block text-sm font-bold text-gray-700 mb-2">Nom
+                                    complet *</label>
+                                <input type="text" id="workshop-name" name="name" required
+                                    class="input-modern w-full px-4 py-3 text-base bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-mdc-blue focus:ring-2 focus:ring-mdc-blue/20 placeholder-gray-400"
+                                    placeholder="Jean Dupont">
+                            </div>
+                            <div>
+                                <label for="workshop-email" class="block text-sm font-bold text-gray-700 mb-2">Email
+                                    professionnel *</label>
+                                <input type="email" id="workshop-email" name="email" required
+                                    class="input-modern w-full px-4 py-3 text-base bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-mdc-blue focus:ring-2 focus:ring-mdc-blue/20 placeholder-gray-400"
+                                    placeholder="jean@entreprise.com">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="workshop-phone"
+                                    class="block text-sm font-bold text-gray-700 mb-2">Téléphone</label>
+                                <input type="tel" id="workshop-phone" name="phone"
+                                    class="input-modern w-full px-4 py-3 text-base bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-mdc-blue focus:ring-2 focus:ring-mdc-blue/20 placeholder-gray-400"
+                                    placeholder="06 12 34 56 78">
+                            </div>
+                            <div>
+                                <label for="workshop-company"
+                                    class="block text-sm font-bold text-gray-700 mb-2">Entreprise *</label>
+                                <input type="text" id="workshop-company" name="company" required
+                                    class="input-modern w-full px-4 py-3 text-base bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-mdc-blue focus:ring-2 focus:ring-mdc-blue/20 placeholder-gray-400"
+                                    placeholder="Nom de votre structure">
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                            <label class="block text-sm font-bold text-gray-700 mb-4">Sujets qui vous intéressent
+                                *</label>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <label
+                                    class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-white rounded-lg transition">
+                                    <input type="checkbox" name="workshops" value="Santé & Prévention"
+                                        class="w-5 h-5 text-mdc-blue border-2 border-gray-300 rounded focus:ring-mdc-blue">
+                                    <span class="text-sm font-medium text-gray-700">Santé</span>
+                                </label>
+                                <label
+                                    class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-white rounded-lg transition">
+                                    <input type="checkbox" name="workshops" value="Qualité de Vie"
+                                        class="w-5 h-5 text-mdc-blue border-2 border-gray-300 rounded focus:ring-mdc-blue">
+                                    <span class="text-sm font-medium text-gray-700">QVT</span>
+                                </label>
+                                <label
+                                    class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-white rounded-lg transition">
+                                    <input type="checkbox" name="workshops" value="Environnement"
+                                        class="w-5 h-5 text-mdc-blue border-2 border-gray-300 rounded focus:ring-mdc-blue">
+                                    <span class="text-sm font-medium text-gray-700">Environnement</span>
+                                </label>
+                                <label
+                                    class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-white rounded-lg transition">
+                                    <input type="checkbox" name="workshops" value="Développement Local"
+                                        class="w-5 h-5 text-mdc-blue border-2 border-gray-300 rounded focus:ring-mdc-blue">
+                                    <span class="text-sm font-medium text-gray-700">Local</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="workshop-message" class="block text-sm font-bold text-gray-700 mb-2">Message
+                                (Optionnel)</label>
+                            <textarea id="workshop-message" name="message" rows="3"
+                                class="input-modern w-full px-4 py-3 text-base bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-mdc-blue focus:ring-2 focus:ring-mdc-blue/20 placeholder-gray-400"
+                                placeholder="Précisez vos besoins..."></textarea>
+                        </div>
+
+                        <div class="flex items-center pt-2">
+                            <input type="checkbox" id="workshop-consent" name="consent" required
+                                class="w-5 h-5 text-mdc-blue border-gray-300 rounded focus:ring-mdc-blue">
+                            <label for="workshop-consent" class="ml-3 text-sm text-gray-600">J'accepte de recevoir des
+                                informations sur les ateliers RSE.</label>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full px-8 py-4 bg-gradient-to-r from-mdc-pink to-pink-600 text-white font-bold rounded-xl hover:shadow-lg hover:from-pink-600 hover:to-pink-700 transition transform hover:scale-[1.01] text-base shadow-md">
+                            M'inscrire gratuitement
+                        </button>
+                    </form>
+
+                    <div id="workshop-success" class="hidden text-center py-12">
+                        <div class="inline-block p-4 rounded-full bg-green-100 mb-4 animate-bounce">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold text-mdc-dark mb-2">C'est confirmé !</h4>
+                        <p class="text-gray-600">Un email de confirmation vous a été envoyé.</p>
+                    </div>
                 </div>
             </div>
 
@@ -80,4 +245,5 @@
     <script src="./data/questionnaire-data.js"></script>
     <script src="./js/questionnaire.js"></script>
 </body>
+
 </html>

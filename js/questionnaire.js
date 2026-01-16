@@ -98,12 +98,12 @@ function showResults() {
     
     for (const [category, items] of Object.entries(solutionsData)) {
         solutionsHTML += `
-            <div class="bg-white p-6 rounded-xl shadow-sm solution-card border border-gray-100">
-                <h4 class="font-bold text-mdc-dark mb-4 uppercase text-sm tracking-wide">${category}</h4>
-                <ul class="space-y-3">
+            <div class="bg-white p-4 rounded-lg shadow-sm solution-card border border-gray-100">
+                <h4 class="font-bold text-mdc-dark mb-3 uppercase text-xs tracking-wide">${category}</h4>
+                <ul class="space-y-2">
                     ${items.map(item => `
-                        <li class="text-sm text-gray-700 flex items-start leading-relaxed">
-                            <svg class="w-4 h-4 text-mdc-pink mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <li class="text-xs text-gray-700 flex items-start leading-snug">
+                            <svg class="w-3 h-3 text-mdc-pink mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span>${item}</span>
@@ -114,4 +114,39 @@ function showResults() {
         `;
     }
     solutionsContainer.innerHTML = solutionsHTML;
+}
+
+function handleWorkshopSubmit(event) {
+    event.preventDefault();
+    
+    // Récupérer les données du formulaire
+    const formData = {
+        name: document.getElementById('workshop-name').value,
+        email: document.getElementById('workshop-email').value,
+        phone: document.getElementById('workshop-phone').value,
+        company: document.getElementById('workshop-company').value,
+        workshops: Array.from(document.querySelectorAll('input[name="workshops"]:checked'))
+            .map(checkbox => checkbox.value),
+        message: document.getElementById('workshop-message').value,
+        date: new Date().toLocaleString('fr-FR')
+    };
+
+    // Vérifier qu'au moins un atelier est sélectionné
+    if (formData.workshops.length === 0) {
+        alert('Veuillez sélectionner au moins un atelier.');
+        return;
+    }
+
+    // Sauvegarder les données (simulation)
+    console.log('Inscription soumise :', formData);
+    
+    // Afficher le message de succès
+    document.getElementById('workshop-form').classList.add('hidden');
+    document.getElementById('workshop-success').classList.remove('hidden');
+    
+    // Optionnel : réinitialiser après 5 secondes
+    setTimeout(() => {
+        document.getElementById('workshop-form').classList.remove('hidden');
+        document.getElementById('workshop-success').classList.add('hidden');
+    }, 5000);
 }
