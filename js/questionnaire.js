@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => renderStep());
 function renderStep() {
     const stepData = steps[currentStep];
     const container = document.getElementById('step-content');
-    
+
     // Progress Bar
     const progressPercent = ((currentStep + 1) / steps.length) * 100;
     document.getElementById('progress-bar').style.width = `${progressPercent}%`;
@@ -15,13 +15,13 @@ function renderStep() {
 
     stepData.questions.forEach(q => {
         html += `<div><p class="font-semibold text-gray-800 mb-3">${q.text}</p>`;
-        
+
         if (q.type === 'select') {
             html += `<select id="${q.id}" class="w-full p-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-mdc-blue focus:ring-2 focus:ring-mdc-blue/20">
                 <option value="">-- Sélectionner --</option>
                 ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
             </select>`;
-        } 
+        }
         else if (q.type === 'radio_score') {
             html += `<div class="grid grid-cols-2 md:grid-cols-4 gap-2">
                 ${['Oui', 'Non', 'En cours', 'Ne sait pas'].map(opt => `
@@ -31,7 +31,7 @@ function renderStep() {
                     </div>
                 `).join('')}
             </div>`;
-        } 
+        }
         else if (q.type === 'rating') {
             html += `<div class="grid grid-cols-4 gap-2 bg-gray-50 p-3 rounded-lg">
                 ${['Faible', 'Moyenne', 'Bonne', 'Très bonne'].map((r, i) => `
@@ -52,7 +52,7 @@ function renderStep() {
                 `).join('')}
             </div>`;
         }
-        
+
         html += `</div>`;
     });
     html += `</div>`;
@@ -87,7 +87,7 @@ function changeStep(direction) {
 function showResults() {
     document.getElementById('rse-form').classList.add('hidden');
     document.getElementById('progress-container').classList.add('hidden');
-    
+
     const resultScreen = document.getElementById('result-screen');
     resultScreen.classList.remove('hidden');
     resultScreen.classList.add('slide-in');
@@ -95,7 +95,7 @@ function showResults() {
     // Génération des Solutions Dynamiques
     const solutionsContainer = document.getElementById('solutions-container');
     let solutionsHTML = '';
-    
+
     for (const [category, items] of Object.entries(solutionsData)) {
         solutionsHTML += `
             <div class="bg-white p-4 rounded-lg shadow-sm solution-card border border-gray-100">
@@ -114,11 +114,19 @@ function showResults() {
         `;
     }
     solutionsContainer.innerHTML = solutionsHTML;
+
+    // Redirection vers page d'exemple du passeport
+    const downloadBtn = document.getElementById('download-pdf-btn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
+            window.location.href = 'passeport-exemple.html';
+        });
+    }
 }
 
 function handleWorkshopSubmit(event) {
     event.preventDefault();
-    
+
     // Récupérer les données du formulaire
     const formData = {
         name: document.getElementById('workshop-name').value,
@@ -139,11 +147,11 @@ function handleWorkshopSubmit(event) {
 
     // Sauvegarder les données (simulation)
     console.log('Inscription soumise :', formData);
-    
+
     // Afficher le message de succès
     document.getElementById('workshop-form').classList.add('hidden');
     document.getElementById('workshop-success').classList.remove('hidden');
-    
+
     // Optionnel : réinitialiser après 5 secondes
     setTimeout(() => {
         document.getElementById('workshop-form').classList.remove('hidden');

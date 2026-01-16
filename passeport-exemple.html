@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exemple Passeport RSE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./config/tailwind.config.js"></script>
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/passeport.css" />
+</head>
+
+<body class="bg-mdc-gray min-h-screen font-sans text-slate-700">
+    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="questionnaire.html" class="flex items-center group py-2">
+                <div class="bg-gray-50 p-2 rounded-lg group-hover:bg-gray-100 transition">
+                    <svg class="w-6 h-6 text-gray-400 group-hover:text-mdc-pink transition" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                </div>
+                <span
+                    class="ml-3 text-sm font-semibold text-gray-500 group-hover:text-mdc-dark transition hidden sm:block">Retour</span>
+            </a>
+            <div class="text-center">
+                <span class="text-mdc-blue font-extrabold tracking-widest uppercase text-base block mb-1">Passeport
+                    RSE</span>
+                <p class="text-xs font-medium text-gray-400">Exemple de rendu PDF</p>
+            </div>
+            <div class="w-12 sm:w-20"></div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-10 max-w-5xl">
+        <div class="text-center mb-6">
+            <p class="text-sm text-gray-500">Aperçu visuel de ce à quoi ressemblera votre passeport avant génération du
+                PDF.</p>
+        </div>
+
+        <section class="passport-wrapper">
+            <div class="passport-a4 bg-white rounded-2xl shadow-2xl border border-white overflow-hidden">
+                <div class="passport-header flex items-center justify-between p-6 border-b border-gray-100">
+                    <div class="flex items-center gap-4">
+                        <img src="./mutuelle-corse-logo.png" alt="Mutuelle de la Corse" class="h-10 w-auto" />
+                        <div>
+                            <h1 class="text-2xl font-extrabold text-mdc-blue">Passeport RSE</h1>
+                            <p class="text-xs text-gray-500">Mutuelle de la Corse</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs text-gray-500">Version d'exemple</p>
+                        <p class="text-xs text-gray-400">Janvier 2026</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6 p-8">
+                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                        <h2 class="text-lg font-bold text-mdc-dark mb-3">Informations Entreprise</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                            <p><span class="font-semibold">Raison sociale:</span> Entreprise Exemple SAS</p>
+                            <p><span class="font-semibold">SIREN:</span> 123 456 789</p>
+                            <p><span class="font-semibold">Secteur:</span> Services</p>
+                            <p><span class="font-semibold">Taille:</span> 25 employés</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                        <h2 class="text-lg font-bold text-mdc-dark mb-3">Synthèse RSE</h2>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <p class="font-semibold text-gray-700 mb-2">Santé & Prévention</p>
+                                <ul class="space-y-1 text-gray-600">
+                                    <li>• Programme annuel de prévention</li>
+                                    <li>• Sensibilisation aux TMS</li>
+                                    <li>• Bilans santé proposés</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-700 mb-2">Qualité de Vie au Travail</p>
+                                <ul class="space-y-1 text-gray-600">
+                                    <li>• Télétravail encadré</li>
+                                    <li>• Charte QVT</li>
+                                    <li>• Baromètre social trimestriel</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-700 mb-2">Environnement</p>
+                                <ul class="space-y-1 text-gray-600">
+                                    <li>• Plan de réduction des déchets</li>
+                                    <li>• Énergie 100% renouvelable</li>
+                                    <li>• Mobilité durable</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-700 mb-2">Ancrage Local</p>
+                                <ul class="space-y-1 text-gray-600">
+                                    <li>• Achats responsables</li>
+                                    <li>• Partenariats associatifs</li>
+                                    <li>• Emploi local</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                        <h2 class="text-lg font-bold text-mdc-dark mb-3">Engagements & Attestations</h2>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-700">
+                            <li class="flex items-center gap-2"><span class="badge">Conformité RGPD</span></li>
+                            <li class="flex items-center gap-2"><span class="badge">Charte Diversité</span></li>
+                            <li class="flex items-center gap-2"><span class="badge">Politique Handicap</span></li>
+                            <li class="flex items-center gap-2"><span class="badge">Plan Climat</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                        <h2 class="text-lg font-bold text-mdc-dark mb-3">Validité du Passeport</h2>
+                        <p class="text-sm text-gray-700">Émis le: 16/01/2026</p>
+                        <p class="text-sm text-gray-700">Valable jusqu'au: 16/01/2027</p>
+                    </div>
+                </div>
+
+                <div class="passport-footer flex items-center justify-between p-6 border-t border-gray-100">
+                    <p class="text-xs text-gray-500">Exemple non contractuel – visuel du PDF</p>
+                    <a href="questionnaire.html"
+                        class="px-5 py-2 bg-mdc-dark text-white text-sm font-bold rounded-lg hover:bg-black transition">Retour
+                        au diagnostic</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
